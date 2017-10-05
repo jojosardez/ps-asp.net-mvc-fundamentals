@@ -12,7 +12,21 @@ namespace MvcControllers
             routes.MapRoute(
                 "SayHello",
                 "Hello",
-                new { controller = "Hello" }
+                new
+                {
+                    controller = "Hello"
+                }
+            );
+
+            routes.MapRoute(
+                "SayHello2",
+                "Hello2",
+                new
+                {
+                    controller = "Hello2",
+                    action = "SayHello",
+                    id = 99
+                }
             );
 
             routes.MapRoute(

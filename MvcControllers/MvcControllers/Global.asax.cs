@@ -24,8 +24,6 @@ namespace MvcControllers
             var container = new Container(c =>
             {
                 c.For<ILogger>().Use<ConsoleLogger>();
-                c.For<HomeController>().Use<HomeController>();
-                c.For<HelloController>().Use<HelloController>();
             });
 
             return container;
