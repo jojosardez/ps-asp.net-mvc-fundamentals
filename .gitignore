@@ -9,3 +9,5 @@ MvcControllers/packages
 MvcControllers/MvcControllers/bin
 MvcControllers/MvcControllers/obj
 MvcControllers/MvcControllers/MvcControllers.csproj.user
+MvcControllers/MvcControllers.Tests/bin
+MvcControllers/MvcControllers.Tests/obj
