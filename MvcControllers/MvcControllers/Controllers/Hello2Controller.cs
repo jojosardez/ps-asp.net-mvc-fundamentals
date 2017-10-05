@@ -6,9 +6,10 @@ namespace MvcControllers.Controllers
     public class Hello2Controller : Controller
     {
         [Log]
-        public string SayHello(int id)
+        public ActionResult SayHello(int id)
         {
-            return "Hello, World! v2.0 " + id.ToString();
+            ViewData["id"] = id;
+            return View("Hello");
         }
     }
 }
