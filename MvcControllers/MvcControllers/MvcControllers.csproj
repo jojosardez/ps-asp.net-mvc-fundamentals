@@ -152,6 +152,7 @@
     </Compile>
     <Compile Include="Infrastructure\ConsoleLogger.cs" />
     <Compile Include="Infrastructure\ILogger.cs" />
+    <Compile Include="Infrastructure\LogAttribute.cs" />
     <Compile Include="Infrastructure\MyControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
