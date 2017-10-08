@@ -48,7 +48,10 @@ namespace MvcViewDemo.Controllers
         // GET: Movie/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var ctx = new MoviesContext();
+            var movie = ctx.Movies.Where(m => m.ID == id).First();
+
+            return View(movie);
         }
 
         // POST: Movie/Edit/5
