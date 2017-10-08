@@ -45,22 +45,29 @@ namespace MvcModelDemo.Controllers
         // GET: Employee/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var repository = new EmployeeRepository();
+            var employee = repository.FindByID(id);
+
+            return View(employee);
         }
 
         // POST: Employee/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
+            var repository = new EmployeeRepository();
+            var employee = repository.FindByID(id);
+
             try
             {
-                // TODO: Add update logic here
+                UpdateModel(employee);
+                repository.Save(employee);
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(employee);
             }
         }
 
