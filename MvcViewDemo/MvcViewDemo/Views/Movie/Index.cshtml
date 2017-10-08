@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr>
+        <td></td>
+        <td>ID</td>
+        <td>Title</td>
+        <td>ReleaseDate</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
+                @Html.ActionLink("Details", "Details", new {id = item.ID})
+            </td>
+            <td>
+                @Html.Encode(item.ID)
+            </td>
+            <td>
+                @Html.Encode(item.Title)
+            </td>
+            <td>
+                @Html.Encode(string.Format("{0:g}", item.ReleaseDate))
+            </td>
+        </tr>
+    }
+</table>
