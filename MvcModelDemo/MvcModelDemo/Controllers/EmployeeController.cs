@@ -1,4 +1,5 @@
-﻿using MovieTheaterDomain;
+﻿using System;
+using MovieTheaterDomain;
 using System.Web.Mvc;
 
 namespace MvcModelDemo.Controllers
@@ -53,22 +54,26 @@ namespace MvcModelDemo.Controllers
 
         // POST: Employee/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, string name, DateTime? hireDate)
         {
             var repository = new EmployeeRepository();
             var employee = repository.FindByID(id);
 
-            try
+            if (ModelState.IsValid)
             {
-                UpdateModel(employee);
+                employee.Name = name;
+                employee.HireDate = hireDate.Value;
                 repository.Save(employee);
 
                 return RedirectToAction("Index");
             }
-            catch
+
+            if (!hireDate.HasValue)
             {
-                return View(employee);
+                ModelState.AddModelError("HireDate", "Could not parse the datetime value");
             }
+
+            return View(employee);
         }
 
         // GET: Employee/Delete/5
