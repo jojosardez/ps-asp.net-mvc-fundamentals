@@ -14,9 +14,18 @@ namespace MovieTheaterDomain
     
     public partial class Movie
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Movie()
+        {
+            this.Reviews = new HashSet<Review>();
+        }
+    
         public int ID { get; set; }
         public string Title { get; set; }
         public System.DateTime ReleaseDate { get; set; }
         public string ImageUrl { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

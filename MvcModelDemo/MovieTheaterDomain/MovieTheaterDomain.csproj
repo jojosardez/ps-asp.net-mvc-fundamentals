@@ -84,6 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MoviesDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MovieSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Review.cs">
       <DependentUpon>MoviesDataModel.tt</DependentUpon>
@@ -98,6 +99,7 @@
       <LastGenOutput>MoviesDataModel.Context.cs</LastGenOutput>
       <DependentUpon>MoviesDataModel.edmx</DependentUpon>
     </Content>
+    <Content Include="MoviesDataModel.edmx.sql" />
     <Content Include="MoviesDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MoviesDataModel.edmx</DependentUpon>

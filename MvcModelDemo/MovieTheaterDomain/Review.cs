@@ -16,8 +16,11 @@ namespace MovieTheaterDomain
     {
         public int ID { get; set; }
         public string Summary { get; set; }
-        public string Rating { get; set; }
+        public long Rating { get; set; }
         public string Body { get; set; }
         public string Reviewer { get; set; }
+        public int Movie_ID { get; set; }
+    
+        public virtual Movie Movie { get; set; }
     }
 }

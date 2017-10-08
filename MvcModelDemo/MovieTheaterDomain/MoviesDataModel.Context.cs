@@ -27,5 +27,7 @@ namespace MovieTheaterDomain
     
         public virtual DbSet<Movie> MovieSet { get; set; }
         public virtual DbSet<Review> ReviewSet { get; set; }
+
+        public System.Data.Entity.DbSet<MovieTheaterDomain.MovieSummary> MovieSummaries { get; set; }
     }
 }

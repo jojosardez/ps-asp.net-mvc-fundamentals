@@ -12,8 +12,15 @@ namespace MvcModelDemo.Controllers
             using (var ctx = new MoviesContext())
             {
                 var movies = ctx.MovieSet
-                    .OrderBy(m => m.ReleaseDate)
+                    .OrderByDescending(m => m.Reviews.Average(r => r.Rating))
                     .Take(10)
+                    .Select(m => new MovieSummary
+                        {
+                            ID = m.ID,
+                            AverageRating = m.Reviews.Average(r => r.Rating),
+                            ReleaseDate = m.ReleaseDate,
+                            Title = m.Title
+                        })
                     .ToList();
 
                 return View(movies);
