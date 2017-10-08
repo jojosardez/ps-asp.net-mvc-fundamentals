@@ -175,6 +175,7 @@
     <Compile Include="Models\Review.cs">
       <DependentUpon>Movies.tt</DependentUpon>
     </Compile>
+    <Compile Include="MyHtmlHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
