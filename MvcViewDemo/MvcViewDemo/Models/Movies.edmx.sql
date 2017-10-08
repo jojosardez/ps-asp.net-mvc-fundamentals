@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/08/2017 11:58:27
+-- Date Created: 10/08/2017 12:43:14
 -- Generated from EDMX file: D:\Jojo\Source\GitHub\ps-asp.net-mvc-fundamentals\MvcViewDemo\MvcViewDemo\Models\Movies.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,20 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_MovieReview]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Reviews] DROP CONSTRAINT [FK_MovieReview];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Movies]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Movies];
+GO
+IF OBJECT_ID(N'[dbo].[Reviews]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Reviews];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -31,7 +40,8 @@ GO
 CREATE TABLE [dbo].[Movies] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [Title] nvarchar(max)  NOT NULL,
-    [ReleaseDate] datetime  NOT NULL
+    [ReleaseDate] datetime  NOT NULL,
+    [ImageUrl] nvarchar(max)  NOT NULL
 );
 GO
 
