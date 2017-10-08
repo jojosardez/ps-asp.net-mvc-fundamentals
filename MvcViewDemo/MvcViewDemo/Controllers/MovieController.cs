@@ -1,4 +1,5 @@
-﻿using MvcViewDemo.Models;
+﻿using MvcContrib.Pagination;
+using MvcViewDemo.Models;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -7,12 +8,17 @@ namespace MvcViewDemo.Controllers
     public class MovieController : Controller
     {
         // GET: Movie
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var ctx = new MoviesContext();
+
+            //var movies = ctx.Movies
+            //    .OrderByDescending(m => m.ReleaseDate)
+            //    .Take(10);
+
             var movies = ctx.Movies
                 .OrderByDescending(m => m.ReleaseDate)
-                .Take(10);
+                .AsPagination(page ?? 1, 5);
 
             return View(movies);
         }

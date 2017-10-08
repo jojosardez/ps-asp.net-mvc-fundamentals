@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MvcViewDemo.Models.Movie>
+﻿@using MvcContrib.UI.Pager
+@model MvcContrib.Pagination.IPagination<MvcViewDemo.Models.Movie>
 
 @{
     ViewBag.Title = "Index";
@@ -12,24 +13,20 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
+        <th>ID</th>
+        <th>Title</th>
+        <th>ReleaseDate</th>
+        <th>ImageUrl</th>
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
-    Html.RenderPartial("MovieRecord", item);
-}
+    @foreach (var item in Model)
+    {
+        Html.RenderPartial("MovieRecord", item);
+    }
 
 </table>
+
+<br/>
+
+@{ Html.Pager(Model);}
