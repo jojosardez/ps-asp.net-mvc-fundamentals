@@ -64,16 +64,25 @@ namespace MvcViewDemo.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add update logic here
 
+            var ctx = new MoviesContext();
+            var movie = ctx.Movies.Where(m => m.ID == id).First();
+
+            TryUpdateModel(movie, new string[] {"Title", "ReleaseDate"}, collection.ToValueProvider());
+
+            if (string.IsNullOrEmpty(movie.Title))
+            {
+                ModelState.AddModelError("Title", "Title cannot be empty");
+            }
+
+
+            if (ModelState.IsValid)
+            {
+                ctx.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(movie);
         }
 
         // GET: Movie/Delete/5
