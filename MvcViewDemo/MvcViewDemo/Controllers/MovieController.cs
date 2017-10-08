@@ -61,6 +61,8 @@ namespace MvcViewDemo.Controllers
         }
 
         // POST: Movie/Edit/5
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
