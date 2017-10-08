@@ -50,18 +50,18 @@ namespace MvcModelDemo.Controllers
 
         // POST: Movie/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Exclude = "ID")] Movie movie)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                using (var ctx = new MoviesContext())
+                {
+                    ctx.MovieSet.Add(movie);
+                    ctx.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Movie/Edit/5
