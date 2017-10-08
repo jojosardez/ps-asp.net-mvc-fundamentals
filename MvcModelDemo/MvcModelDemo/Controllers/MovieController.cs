@@ -68,22 +68,27 @@ namespace MvcModelDemo.Controllers
         // GET: Movie/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var ctx = new MoviesContext())
+            {
+                var movie = ctx.MovieSet.Where(m => m.ID == id).First();
+                return View(movie);
+            }
         }
 
         // POST: Movie/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
+            using (var ctx = new MoviesContext())
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                var movie = ctx.MovieSet.Where(m => m.ID == id).First();
+                TryUpdateModel(movie, new string[] {"Title", "ReleaseDate"});
+                if (ModelState.IsValid)
+                {
+                    ctx.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(movie);
             }
         }
         

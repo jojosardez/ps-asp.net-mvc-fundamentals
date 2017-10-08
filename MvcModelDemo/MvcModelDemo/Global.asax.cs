@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using MvcModelDemo.Binders;
+using System;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -16,6 +14,13 @@ namespace MvcModelDemo
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            RegisterModelBinders();
+        }
+
+        private void RegisterModelBinders()
+        {
+            ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
         }
     }
 }
