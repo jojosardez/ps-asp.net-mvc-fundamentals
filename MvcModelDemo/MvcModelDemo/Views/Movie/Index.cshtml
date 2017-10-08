@@ -5,7 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Top Moview!</h2>
+
+@using (Html.BeginForm("Index", "Movie", FormMethod.Get))
+{
+    @Html.TextBox("q")
+    <input type="submit" value="Search" />
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
