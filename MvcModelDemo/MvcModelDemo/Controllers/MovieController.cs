@@ -86,27 +86,18 @@ namespace MvcModelDemo.Controllers
                 return View();
             }
         }
-
-        // GET: Movie/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
+        
         // POST: Movie/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
-            try
+            using (var ctx = new MoviesContext())
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var movie = ctx.MovieSet.Where(m => m.ID == id).First();
+                ctx.MovieSet.Remove(movie);
+                ctx.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

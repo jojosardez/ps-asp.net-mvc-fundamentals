@@ -44,7 +44,10 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @using (Html.BeginForm("Delete", "Movie", new { id = item.ID }))
+            { 
+                <input type="submit" value="Delete"/>
+            }
         </td>
     </tr>
 }
