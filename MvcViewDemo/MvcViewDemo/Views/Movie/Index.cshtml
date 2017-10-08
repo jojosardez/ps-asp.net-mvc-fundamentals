@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<MvcViewDemo.Models.Movie>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,30 +7,40 @@
 
 <h2>Index</h2>
 
-<table>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
     <tr>
-        <td></td>
-        <td>ID</td>
-        <td>Title</td>
-        <td>ReleaseDate</td>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {id = item.ID}) |
-                @Html.ActionLink("Details", "Details", new {id = item.ID})
-            </td>
-            <td>
-                @Html.Encode(item.ID)
-            </td>
-            <td>
-                @Html.Encode(item.Title)
-            </td>
-            <td>
-                @Html.Encode(string.Format("{0:g}", item.ReleaseDate))
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
 </table>
