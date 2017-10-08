@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcModelDemo", "MvcModelDemo\MvcModelDemo.csproj", "{C5E515D6-616A-4E21-962D-530C74903018}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieTheaterDomain", "MovieTheaterDomain\MovieTheaterDomain.csproj", "{01E28350-2898-4247-88F3-D057507196FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C5E515D6-616A-4E21-962D-530C74903018}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5E515D6-616A-4E21-962D-530C74903018}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5E515D6-616A-4E21-962D-530C74903018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E28350-2898-4247-88F3-D057507196FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E28350-2898-4247-88F3-D057507196FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E28350-2898-4247-88F3-D057507196FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E28350-2898-4247-88F3-D057507196FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
