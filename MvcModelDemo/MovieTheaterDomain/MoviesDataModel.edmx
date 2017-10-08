@@ -41,7 +41,6 @@
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ReleaseDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Reviews" Relationship="MovieReviewsModel.MovieReview" FromRole="Movie" ToRole="Review" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -52,27 +51,18 @@
           <Property Name="Rating" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Reviewer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Movie" Relationship="MovieReviewsModel.MovieReview" FromRole="Review" ToRole="Movie" />
         </EntityType>
         <EntityContainer Name="MoviesContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Movies1" EntityType="MovieReviewsModel.Movie" />
-          <EntitySet Name="Reviews" EntityType="Self.Review" />
-          <AssociationSet Name="MovieReview" Association="MovieReviewsModel.MovieReview">
-            <End Role="Movie" EntitySet="Movies1" />
-            <End Role="Review" EntitySet="Reviews" />
-          </AssociationSet>
+          <EntitySet Name="MovieSet" EntityType="MovieReviewsModel.Movie" />
+          <EntitySet Name="ReviewSet" EntityType="Self.Review" />
         </EntityContainer>
-        <Association Name="MovieReview">
-          <End Type="MovieReviewsModel.Movie" Role="Movie" Multiplicity="1" />
-          <End Type="MovieReviewsModel.Review" Role="Review" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MoviesModelStoreContainer" CdmEntityContainer="MoviesContext">
-          <EntitySetMapping Name="Movies1">
+          <EntitySetMapping Name="MovieSet">
             <EntityTypeMapping TypeName="MovieReviewsModel.Movie">
               <MappingFragment StoreEntitySet="Movies">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -82,7 +72,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Reviews">
+          <EntitySetMapping Name="ReviewSet">
             <EntityTypeMapping TypeName="MovieReviewsModel.Review">
               <MappingFragment StoreEntitySet="Reviews">
                 <ScalarProperty Name="ID" ColumnName="ID" />

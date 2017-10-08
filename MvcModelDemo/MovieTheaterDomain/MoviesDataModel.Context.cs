@@ -25,7 +25,7 @@ namespace MovieTheaterDomain
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Movie> Movies1 { get; set; }
-        public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Movie> MovieSet { get; set; }
+        public virtual DbSet<Review> ReviewSet { get; set; }
     }
 }

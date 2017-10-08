@@ -19,7 +19,5 @@ namespace MovieTheaterDomain
         public string Rating { get; set; }
         public string Body { get; set; }
         public string Reviewer { get; set; }
-    
-        public virtual Movie Movie { get; set; }
     }
 }
