@@ -30,7 +30,16 @@ namespace MvcModelDemo.Controllers
         // GET: Movie/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            using (var ctx = new MoviesContext())
+            {
+                var movie = ctx.MovieSet
+                    .Include("Reviews")
+                    .Where(m => m.ID == id)
+                    .First();
+
+
+                return View(movie);
+            }
         }
 
         // GET: Movie/Create
